@@ -15,4 +15,10 @@ class Personaje {
     this.estado = "muerto";
   }
 
+  comunicar() {
+    return `${this.nombre} dice: `;
+  }
+
 }
+
+
