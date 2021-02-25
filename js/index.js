@@ -10,5 +10,9 @@ class Personaje {
     this.edad = edadDefinir;
     this.estado = "vivo";
   }
-}
 
+  morir() {
+    this.estado = "muerto";
+  }
+
+}
