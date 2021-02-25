@@ -31,7 +31,29 @@ class Rey extends Personaje {
   }
 
   comunicar() {
-    return `${super.comunicar()} "Vais a Morir Todos"`
+    return `${super.comunicar()} "Vais a Morir Todos"`;
   }
 }
 
+class Luchador extends Personaje {
+  arma;
+  constructor(nombre, familia, edad, armaDefinir) {
+    super(nombre, familia, edad);
+    this.arma = armaDefinir;
+  }
+
+  comunicar() {
+    return `${super.comunicar()} "Primero pego y luego pregunto"`;
+  }
+}
+
+class Arma {
+  nombre;
+  destreza;
+  constructor(nombreDefinir) {
+    this.nombre = nombreDefinir;
+  }
+  set destreza(destrezaDefinir) {
+    this.destreza = destrezaDefinir;
+  }
+}
