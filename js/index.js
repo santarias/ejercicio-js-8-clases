@@ -123,4 +123,8 @@ class Asesor extends Personaje {
   }
 }
 
-
+const Joffrey = new Rey("Joffrey", "Baratheon", 25, 3);
+const Jamie = new Luchador("Jamie", "Lannister", 37, "Espada", 7);
+const Daenerys = new Luchador("Daenerys", "Targaryen", 27, "Dragon", 10);
+const Tyrion = new Asesor("Tyrion", "Lannister", 34, Daenerys);
+const Bronn = new Escudero("Bronn", "Ninguna", 36, Jamie);
