@@ -130,3 +130,7 @@ const Tyrion = new Asesor("Tyrion", "Lannister", 34, Daenerys);
 const Bronn = new Escudero("Bronn", "Ninguna", 36, Jamie);
 
 const listaPersonajes = [Joffrey, Jamie, Daenerys, Tyrion, Bronn];
+
+const seriePersonajes = Array.from(new Set(listaPersonajes.map((personaje) => personaje.serie)));
+
+console.log(seriePersonajes);
