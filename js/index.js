@@ -134,3 +134,6 @@ const listaPersonajes = [Joffrey, Jamie, Daenerys, Tyrion, Bronn];
 const seriePersonajes = Array.from(new Set(listaPersonajes.map((personaje) => personaje.serie)));
 
 console.log(seriePersonajes);
+
+Jamie.morir();
+Tyrion.morir();
