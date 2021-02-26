@@ -77,6 +77,24 @@ class Escudero extends Personaje {
     this.veriricarPelotismo(pelotismoVerificar);
   }
 
+  verificarPersonajeServir(personaje) {
+    if (personaje instanceof Luchador) {
+      this.personajeQueSirve = personaje;
+    }
+  }
+
+  veriricarPelotismo(pelotismoDefinir) {
+    if (pelotismoDefinir > 0 && pelotismoDefinir <= 10) {
+      this.pelotismo = pelotismoDefinir;
+    } else {
+      this.pelotismo = 0;
+    }
+  }
+
+  comunicar() {
+    return `${super.comunicar()} "Soy un loser"`;
+  }
+}
 class Asesor extends Personaje {
   personajeAsesorado;
   constructor(nombre, familia, edad, asesorado) {
@@ -104,22 +122,5 @@ class Asesor extends Personaje {
     return `${super.comunicar()} "No se por que, pero creo que voy a morir pronto"`;
   }
 }
-  verificarPersonajeServir(personaje) {
-    if (personaje instanceof Luchador) {
-      this.personajeQueSirve = personaje;
-    }
 
-  }
-
-  veriricarPelotismo(pelotismoDefinir) {
-    if (pelotismoDefinir > 0 && pelotismoDefinir <= 10) {
-      this.pelotismo = pelotismoDefinir;
-    } else {
-      this.pelotismo = 0;
-    }
-  }
-  comunicar() {
-    return `${super.comunicar()} "Soy un loser"`;
-  }
-}
 
