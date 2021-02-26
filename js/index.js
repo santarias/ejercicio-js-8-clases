@@ -37,9 +37,19 @@ class Rey extends Personaje {
 
 class Luchador extends Personaje {
   arma;
+  destreza;
   constructor(nombre, familia, edad, armaDefinir) {
     super(nombre, familia, edad);
     this.arma = armaDefinir;
+  }
+  set setterDestreza(destrezaDefinir) {
+    if (destrezaDefinir > 0 && destrezaDefinir <= 10) {
+      this.destreza = destrezaDefinir;
+    } else if (destrezaDefinir < 0) {
+      this.destreza = 0;
+    } else if (destrezaDefinir > 10) {
+      this.destreza = 10;
+    }
   }
 
   comunicar() {
@@ -47,13 +57,3 @@ class Luchador extends Personaje {
   }
 }
 
-class Arma {
-  nombre;
-  destreza;
-  constructor(nombreDefinir) {
-    this.nombre = nombreDefinir;
-  }
-  set destreza(destrezaDefinir) {
-    this.destreza = destrezaDefinir;
-  }
-}
