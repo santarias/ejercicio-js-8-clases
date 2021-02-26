@@ -47,6 +47,34 @@ class Luchador extends Personaje {
   }
 }
 
+class Asesor extends Personaje {
+  personajeAsesorado;
+  constructor(nombre, familia, edad, asesorado) {
+    super(nombre, familia, edad);
+    this.verificarAsesorado(asesorado);
+  }
+  set personajeAsesor(personajeDefinir) {
+    this.verificarAsesorado(personajeDefinir);
+  }
+
+  verificarAsesorado(personaje) {
+    if (personaje instanceof Luchador) {
+      this.personajeAsesorado = personaje;
+    }
+    if (personaje instanceof Rey) {
+      this.personajeAsesorado = personaje;
+    }
+    if (personaje instanceof Escudero) {
+      this.personajeAsesorado = personaje;
+    }
+  }
+
+
+  comunicar() {
+    return `${super.comunicar()} "No se por que, pero creo que voy a morir pronto"`;
+  }
+}
+
 class Arma {
   nombre;
   destreza;
