@@ -152,32 +152,20 @@ Tyrion.morir();
 
 function resumenListaPersonajes(listaPersonajes) {
   const resumenPersonajes = [];
-  resumenPersonajes.push({
-    tipo: "Rey",
-    personajes: listaPersonajes
-      .filter(personaje => personaje instanceof Rey)
-      .sort((x, y) => x.edad - y.edad)
-  });
-  resumenPersonajes.push({
-    tipo: "Luchador",
-    personajes: listaPersonajes
-      .filter(personaje => personaje instanceof Luchador)
-      .sort((x, y) => x.edad - y.edad)
-  });
-  resumenPersonajes.push({
-    tipo: "Asesor",
-    personajes: listaPersonajes
-      .filter(personaje => personaje instanceof Asesor)
-      .sort((x, y) => x.edad - y.edad)
-  });
-  resumenPersonajes.push({
-    tipo: "Escudero",
-    personajes: listaPersonajes
-      .filter(personaje => personaje instanceof Escudero)
-      .sort((x, y) => x.edad - y.edad)
-  });
-  console.log(resumenPersonajes);
+
+  const nombresClases = Array.from(new Set(listaPersonajes.map((personaje) => personaje.constructor.name)));
+
+  for (const nombreClase of nombresClases) {
+
+    resumenPersonajes.push({
+      tipo: nombreClase,
+      personajes: listaPersonajes
+        .filter(personaje => personaje instanceof nombreClase.constructor)
+        .sort((x, y) => x.edad - y.edad)
+    });
+  }
+  return resumenPersonajes;
 }
 
-/* resumenL = resumenListaPersonajes(listaPersonajes);
-console.log(resumenL);  */
+resumenL = resumenListaPersonajes(listaPersonajes);
+console.log(resumenL);  
