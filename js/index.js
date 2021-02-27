@@ -57,8 +57,6 @@ class Luchador extends Personaje {
     }
   }
 
-
-
   comunicar() {
     return `${super.comunicar()} "Primero pego y luego pregunto"`;
   }
@@ -106,13 +104,7 @@ class Asesor extends Personaje {
   }
 
   verificarAsesorado(personaje) {
-    if (personaje instanceof Luchador) {
-      this.personajeAsesorado = personaje;
-    }
-    if (personaje instanceof Rey) {
-      this.personajeAsesorado = personaje;
-    }
-    if (personaje instanceof Escudero) {
+    if (personaje instanceof Luchador || personaje instanceof Rey || personaje instanceof Escudero) {
       this.personajeAsesorado = personaje;
     }
   }
@@ -136,8 +128,6 @@ function mensajesLuchador(personajes) {
   return luchadorMensajes;
 }
 
-/* luchadores = mensajesLuchador(listaPersonajes);
-console.log(luchadores); */
 
 const seriePersonajes = Array.from(new Set(listaPersonajes.map((personaje) => personaje.serie)));
 
@@ -154,18 +144,16 @@ function resumenListaPersonajes(listaPersonajes) {
   const resumenPersonajes = [];
 
   const nombresClases = Array.from(new Set(listaPersonajes.map((personaje) => personaje.constructor.name)));
-
   for (const nombreClase of nombresClases) {
-
+    const nuevaLista = Array.from(new Set(listaPersonajes.filter((personaje) => personaje.constructor.name === nombreClase)));
+    nuevaLista.sort((x, y) => x.edad - y.edad);
     resumenPersonajes.push({
       tipo: nombreClase,
-      personajes: listaPersonajes
-        .filter(personaje => personaje instanceof nombreClase.constructor)
-        .sort((x, y) => x.edad - y.edad)
+      personajes: nuevaLista
     });
   }
   return resumenPersonajes;
 }
 
 resumenL = resumenListaPersonajes(listaPersonajes);
-console.log(resumenL);  
+console.log(resumenL);
