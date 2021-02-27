@@ -131,9 +131,53 @@ const Bronn = new Escudero("Bronn", "Ninguna", 36, Jamie);
 
 const listaPersonajes = [Joffrey, Jamie, Daenerys, Tyrion, Bronn];
 
+function mensajesLuchador(personajes) {
+  const luchadorMensajes = personajes.filter(personaje => personaje instanceof Luchador).map(personaje => personaje.comunicar());
+  return luchadorMensajes;
+}
+
+/* luchadores = mensajesLuchador(listaPersonajes);
+console.log(luchadores); */
+
 const seriePersonajes = Array.from(new Set(listaPersonajes.map((personaje) => personaje.serie)));
+
+const mensajes = listaPersonajes.map((personaje) => personaje.comunicar());
+
+console.log(mensajes);
 
 console.log(seriePersonajes);
 
 Jamie.morir();
 Tyrion.morir();
+
+function resumenListaPersonajes(listaPersonajes) {
+  const resumenPersonajes = [];
+  resumenPersonajes.push({
+    tipo: "Rey",
+    personajes: listaPersonajes
+      .filter(personaje => personaje instanceof Rey)
+      .sort((x, y) => x.edad - y.edad)
+  });
+  resumenPersonajes.push({
+    tipo: "Luchador",
+    personajes: listaPersonajes
+      .filter(personaje => personaje instanceof Luchador)
+      .sort((x, y) => x.edad - y.edad)
+  });
+  resumenPersonajes.push({
+    tipo: "Asesor",
+    personajes: listaPersonajes
+      .filter(personaje => personaje instanceof Asesor)
+      .sort((x, y) => x.edad - y.edad)
+  });
+  resumenPersonajes.push({
+    tipo: "Escudero",
+    personajes: listaPersonajes
+      .filter(personaje => personaje instanceof Escudero)
+      .sort((x, y) => x.edad - y.edad)
+  });
+  console.log(resumenPersonajes);
+}
+
+/* resumenL = resumenListaPersonajes(listaPersonajes);
+console.log(resumenL);  */
